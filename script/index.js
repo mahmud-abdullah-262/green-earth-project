@@ -27,6 +27,7 @@ const loadAllTrees = () => {
   fetch(url)
   .then(res => res.json())
   .then(data => {
+    spinner(true)
     removeActive();
     document.getElementById('all-tree-btn').classList.add('bg-green-600', 'text-white')
     displayTress(data.plants)
@@ -38,6 +39,7 @@ const loadTrees = (id) => {
   fetch(url)
   .then(res => res.json())
   .then(data => {
+    spinner(true)
     removeActive()
     const categoryBtn = document.getElementById(`catagroy-id-${id}`)
     categoryBtn.classList.add('bg-green-600', 'text-white')
@@ -47,17 +49,19 @@ const loadTrees = (id) => {
 }
 
 const displayTress = (trees) =>{
+  
   const treeContainer = document.getElementById('tree-container');
   treeContainer.innerHTML = '';
 
   trees.forEach(tree => {
     const newTree = document.createElement('div');
-    newTree.classList.add('card', 'bg-white', 'p-4', 'space-y-2', 'shadow-sm')
+    newTree.classList.add('card', 'bg-white', 'p-4', 'space-y-2', 'shadow-sm',);
+    // newTree.setAttribute("onclick", `loadTreeDetails(${tree.id})`)
     newTree.innerHTML = `
 
     <div class="h-50 overflow-hidden">  
     <img class="rounded-xl h-full w-full object-cover" src="${tree.image}" alt=""> </div>
-        <h1 class="font-bold text-gray-800">${tree.name}</h1>
+        <h1 onclick="loadTreeDetails(${tree.id})" class="font-bold text-gray-800 cursor-pointer">${tree.name}</h1>
         <p>${tree.description}</p>
 
         <div id="catagory-price" class="flex justify-between font-bold">
@@ -69,8 +73,38 @@ const displayTress = (trees) =>{
           <p>Add to cart</p>
     `
     treeContainer.append(newTree)
+    spinner(false)
   })
 }
+
+const loadTreeDetails = (id) =>{
+ const url = `https://openapi.programming-hero.com/api/plant/${id}`;
+ fetch(url).then(res => res.json()).then(data => displayTreeDetails(data.plants))
+}
+
+const displayTreeDetails = (treeDetails) => {
+  const modal = document.getElementById('tree_detiles');
+  modal.showModal();
+
+  modal.innerHTML = `
+  <div class="modal-box">
+    <img src="${treeDetails.image}" alt="">
+    <h3 class="text-2xl font-bold text-green-600 mt-6">${treeDetails.name}</h3>
+    <p class="py-4 text-gray-600">${treeDetails.description}</p>
+    <div class="flex justify-between items-center">
+      <p class="bg-green-400 font-bold text-white p-2 rounded-xl">${treeDetails.category}</p>
+    <p class="font-bold text-gray-600">Price: ৳${treeDetails.price}</p>
+    </div>
+    
+    <div class="modal-action">
+      <form method="dialog">
+        <!-- if there is a button in form, it will close the modal -->
+        <button class="btn">Close</button>
+      </form>
+    </div>
+  </div>
+  `
+}  
 
 const addToCart = (treeName, price) => {
   const cartContainer = document.getElementById('cart-container');
@@ -105,5 +139,15 @@ const removeActive = () => {
   })
 }
 
+
+const spinner = (status) => {
+  if (status === true){
+    document.getElementById('spinner').classList.remove('hidden')
+    document.getElementById('tree-container').classList.add('hidden')
+  } else{
+     document.getElementById('spinner').classList.add('hidden');
+    document.getElementById('tree-container').classList.remove('hidden')
+  }
+}
 
 loadCategory()
