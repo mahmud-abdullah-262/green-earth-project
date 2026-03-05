@@ -23,11 +23,12 @@ const displayCategory = (arrey) => {
 }
 
 const loadAllTrees = () => {
+  spinner(true)
   const url = 'https://openapi.programming-hero.com/api/plants';
   fetch(url)
   .then(res => res.json())
   .then(data => {
-    spinner(true)
+    
     removeActive();
     document.getElementById('all-tree-btn').classList.add('bg-green-600', 'text-white')
     displayTress(data.plants)
@@ -35,11 +36,12 @@ const loadAllTrees = () => {
 
 }
 const loadTrees = (id) => {
+  spinner(true)
   const url = `https://openapi.programming-hero.com/api/category/${id}`;
   fetch(url)
   .then(res => res.json())
   .then(data => {
-    spinner(true)
+    
     removeActive()
     const categoryBtn = document.getElementById(`catagroy-id-${id}`)
     categoryBtn.classList.add('bg-green-600', 'text-white')
