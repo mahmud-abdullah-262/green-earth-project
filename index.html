@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>green earth</title>
+
+  <!-- daisy UI tailwind css -->
+   <link href="https://cdn.jsdelivr.net/npm/daisyui@5" rel="stylesheet" type="text/css" />
+<script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+
+<!-- google font -->
+ <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap" rel="stylesheet">
+
+<style>
+  *{
+    font-family: "Inter", sans-serif;
+  }
+</style>
+</head>
+<body>
+  <!-- navbar -->
+   <div class="navbar bg-green-600 text-white shadow-sm ">
+  <div class="navbar-start">
+    <div class="dropdown">
+      <div tabindex="0" role="button" class="btn btn-ghost lg:hidden">
+        <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor"> <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h8m-8 6h16" /> </svg>
+      </div>
+      <ul
+        tabindex="-1"
+        class="menu menu-sm dropdown-content bg-green-600 text-white rounded-box z-1 mt-3 w-52 p-2 shadow">
+      <li><a>About</a></li>
+      <li><a>Gallary</a></li>
+      <li><a>Plant a Tree</a></li>
+      </ul>
+    </div>
+    <a class="text-xl font-bold">Green Earth</a>
+  </div>
+  <div class="navbar-center hidden lg:flex">
+    <ul class="menu menu-horizontal px-1">
+      <li><a>About</a></li>
+      <li><a>Gallary</a></li>
+      <li><a>Plant a Tree</a></li>
+    </ul>
+  </div>
+  <div class="navbar-end">
+    <a class="btn bg-yellow-400 text-green-600 rounded-full">Plant a Tree</a>
+  </div>
+</div>
+
+
+<!-- banner -->
+
+<div class=" bg-green-200">
+  <div class="flex flex-row pt-10 justify-center items-center">
+    <div class="flex-1">
+      <img  src="assets/hero-leaf1.png" alt="">
+    </div>
+    
+    <div class="text-center flex-1">
+      <h1 class="text-4xl font-bold">Plant a Tree, Grow a Future</h1>
+      <p class="py-6">
+       Join our mission to plant 1 million trees and make the Earth greener for future
+generations.
+      </p>
+      <button class="btn bg-yellow-400 text-green-600 rounded-full">Get Started</button>
+    </div>
+    <div class="flex-1">
+      <img class="flex-1" src="assets/hero-leaf2.png" alt="">
+    </div>
+    
+  </div>
+</div>
+
+<!-- main section -->
+
+<main class="bg-green-50 pt-20">
+  <h1 class="text-4xl font-bold text-center mb-10">Choose Your Trees</h1>
+  <section class="grid grid-cols-5 gap-4 w-11/12 mx-auto">
+
+    <!-- left section -->
+   <aside class="col-span-1">
+    <h3 class="text-xl font-bold mb-4">Categories</h3>
+
+    <div class="bg-base-200 text-green-400 w-full text-left p-4 cursor-pointer rounded-xl shadow-sm font-bold category-btn mb-2" id="all-tree-btn" onclick="loadAllTrees()">all Tree
+    </div>
+
+    <div id="category-container" class="w-full space-y-2">
+      
+    <!-- <div class="add-to-cart btn bg-base-200 rounded-sm text-green-400 w-full">
+          <p>all Trees</p>
+        </div> -->
+    </div>
+   </aside>
+
+   <!-- center section -->
+    <section id="tree-container" class="col-span-3 grid grid-cols-1 lg:grid-cols-3 gap-4 items-start">
+
+    <div class="flex justify-center items-center col-span-3 mt-40">
+      <h1 class="text-6xl text-green-200 text-center font-black">Choose <br> Your  <br> Trees</h1>
+    </div>
+
+        
+      
+    </section>
+
+    <!-- right section -->
+
+    <aside class="col-span-1 bg-white p-4">
+     <h3 class="text-xl font-bold mb-4">Your Cart</h3>
+
+      <div id="cart-container" class="space-y-2">
+         <p id="empty-msg">Your cart is empty</p>
+      </div>
+      <div class="total bg-green-100 rounded-xl p-2 mt-2 flex justify-between font-bold">
+          <p>Total:</p>
+          <p id="total-price">0</p>
+        </div>
+    </aside>
+  </section>
+  
+</main>
+
+
+
+
+
+<script src="script/index.js"></script>
+</body>
+</html>
