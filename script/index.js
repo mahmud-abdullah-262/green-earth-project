@@ -1,3 +1,4 @@
+
 const loadCategory = () =>{
 const url = 'https://openapi.programming-hero.com/api/categories';
 fetch(url)
@@ -71,7 +72,7 @@ const displayTress = (trees) =>{
           <p id="price">${tree.price}</p>
            </div>
 
-        <div onclick="addToCart('${tree.name}', ${tree.price})" class="add-to-cart btn bg-green-600 rounded-full text-white">
+        <div onclick="addToCart(${tree.id})" class="add-to-cart btn bg-green-600 rounded-full text-white">
           <p>Add to cart</p>
     `
     treeContainer.append(newTree)
@@ -108,31 +109,7 @@ const displayTreeDetails = (treeDetails) => {
   `
 }  
 
-const addToCart = (treeName, price) => {
-  const cartContainer = document.getElementById('cart-container');
-  const emptyMsg = document.getElementById('empty-msg');
 
-  if(emptyMsg){
-    emptyMsg.classList.add('hidden')
-  }
-
-  const newItem = document.createElement('div');
-  newItem.classList.add('cart', 'bg-green-100', 'rounded-xl', 'p-2');
-  newItem.innerHTML = `
-  <h1 class="font-bold">${treeName}</h1>
-          <p>৳${price} x 1</p>
-  `;
-  cartContainer.append(newItem);
-
-  let totalPrice = Number(document.getElementById('total-price').innerText);
-  console.log(totalPrice)
-  totalPrice = totalPrice + price;
-  console.log(totalPrice)
-
-  document.getElementById('total-price').innerText = totalPrice;
-
-
-}
 
 const removeActive = () => {
   const activeBtn = document.querySelectorAll('.category-btn');

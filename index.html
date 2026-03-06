@@ -5,6 +5,11 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>green earth</title>
 
+
+  <!-- font awesome -->
+   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.1/css/all.min.css" integrity="sha512-2SwdPD6INVrV/lHTZbO2nodKhrnDdJK9/kg2XD1r9uGqPo1cUbujc+IYdlYdEErWNu69gVcYgdxlmVmzTWnetw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+
+
   <!-- daisy UI tailwind css -->
    <link href="https://cdn.jsdelivr.net/npm/daisyui@5" rel="stylesheet" type="text/css" />
 <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
@@ -117,11 +122,25 @@ generations.
      <h3 class="text-xl font-bold mb-4">Your Cart</h3>
 
       <div id="cart-container" class="space-y-2">
+
+        <!-- <div class="flex justify-between items-center font-bold bg-green-100 px-2 py-2 gap-2 rounded-2xl text-green-600">
+          
+          <p>Mango Tree</p>
+          <p>0</p>
+          <i class="fa-solid fa-circle-minus"></i>
+        </div> -->
          <p id="empty-msg">Your cart is empty</p>
       </div>
-      <div class="total bg-green-100 rounded-xl p-2 mt-2 flex justify-between font-bold">
-          <p>Total:</p>
+      <div class="total bg-green-100 rounded-xl p-2 mt-2 flex flex-col gap-4 justify-between font-bold">
+          <div class="flex justify-between">
+            <p>Total Item:</p>
+          <p id="total-Item">0</p>
+          </div>
+
+          <div class="flex justify-between">
+            <p>Total Price:</p>
           <p id="total-price">0</p>
+          </div>
         </div>
     </aside>
   </section>
@@ -137,5 +156,6 @@ generations.
 
 
 <script src="script/index.js"></script>
+<script src="script/cart.js"></script>
 </body>
 </html>
